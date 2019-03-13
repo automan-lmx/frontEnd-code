@@ -14,67 +14,67 @@
     </div>
     <script>
        var a = [{name: 'hhh',number: 12}, { name: 'ffff',number: 13}, {  name: 'f',number: 14 }, {name: 'hh',number: 15}];
- var b = [{name: 'vita',sex: '女',number: 12}, {name: 'ef',sex: '女',number: 13}, {name: 'frr',sex: '女',number: 14}];
+        var b = [{name: 'vita',sex: '女',number: 12}, {name: 'ef',sex: '女',number: 13}, {name: 'frr',sex: '女',number: 14}];
 
-function sortMember(a,b){ // 对无序列表进行排序 使用增强版的 sort()
-    a.sort(function(a,b){
-        return a.number - b.number; // 对数组进行排序，这种方法可以解决 sort()排序的bug
-    })
-    b.sort(function(a,b){
-        return a.number - b.number;
-    });
-    return [a,b];
-}
-
-/**
-* mergeArr( callback )函数 进行合并两个有序数组的操作
-* callback 接收的是 排序后返回数组[a,b]的结果
-*/
-function mergeArr(callback){ 
-    var a = callback[0], b = callback[1]; 
-    var result = [], k = 0,i = 0,j = 0;
-    while(i < a.length && j < b.length){  // 这里的while语句是 判断 当A数组还存在元素跟 B数组元素也存在的情况下
-        if(a[i].number <= b[j].number){  // 如果 男员工的工号 比 女员工的工号小，就加入 一个空的数组 result
-            if(a[i].number == b[j].number){ // 判断男生工号 与 女生工号相等的情况
-               b[j].number += 1; // 如果工号相等，就让 女员工工号 加 1
-            }
-          result[k++] = a[i++]; // 这个句子的意思是 当男员工工号小于 女员工， 就存进result数组，result数组向后移一位， 男员工数组元素索引也向后移一位
-        }else{ // 当女生的工号比男生的大
-            if(b[j].number == b[j+1].number){ // 如果女生工号改变之后等于后一位女生的工号，就让后一位女生工号加1
-                b[j+1].number += 1;
-            }
-            if(b[j].number > b[j+1].number){  // 如果女生工号改变后大于后面的工号，通过 大的减去小的 再加1
-                var c = b[j].number - b[j+1].number +1; // 这个句子可以通过自己写一些数字去推出来， 例如 前面的是 16 后面的是 14 ，c的结果就是 17
-                b[j+1].number += c;
-            }
-            result[k++] = b[j++]; // 判断的条件是女生工号 大于男的，就把女生的工号存在result数组，之后result 的索引向后移一位，女员工数组向后移一位
+        function sortMember(a,b){ // 对无序列表进行排序 使用增强版的 sort()
+            a.sort(function(a,b){
+                return a.number - b.number; // 对数组进行排序，这种方法可以解决 sort()排序的bug
+            })
+            b.sort(function(a,b){
+                return a.number - b.number;
+            });
+            return [a,b];
         }
-    }
 
-    while(i<a.length){  // 这个while语句比上面的少了 j < b.length; 意思就是 b数组已经遍历完了，但是a数组还有数据没有存进 result数组 
-        result[k++] = a[i++]; // 把剩余的 a数组里的元素 添加进 result数组，result数组向后移一位， a数组也向后移一位
-        // 相当于下面的形式 
-       //  result[k] = a[i];
-       //  k++;
-      //   i++;
-    }
-    while(j < b.length){ // 这个while语句比上面的少了 i<a.length; 意思就是 b数组已经遍历完了，但是b 数组还有数据没有存进 result数组 
-       for(var i = 0; i < j; i++){ // 对于剩下的b数组，就是女员工，因为需要跟女员工内部比较，所以我们要遍历剩下的女员工数组，不能直接插入
-             if(b[i].number == b[i+1].number){ // 如果经过与男员工比较之后 number 变为跟后面一位女员工 number 一样，就让后一位女生工号加1
-                b[i+1].number += 1;
+        /**
+        * mergeArr( callback )函数 进行合并两个有序数组的操作
+        * callback 接收的是 排序后返回数组[a,b]的结果
+        */
+        function mergeArr(callback){ 
+            var a = callback[0], b = callback[1]; 
+            var result = [], k = 0,i = 0,j = 0;
+            while(i < a.length && j < b.length){  // 这里的while语句是 判断 当A数组还存在元素跟 B数组元素也存在的情况下
+                if(a[i].number <= b[j].number){  // 如果 男员工的工号 比 女员工的工号小，就加入 一个空的数组 result
+                    if(a[i].number == b[j].number){ // 判断男生工号 与 女生工号相等的情况
+                       b[j].number += 1; // 如果工号相等，就让 女员工工号 加 1
+                    }
+                  result[k++] = a[i++]; // 这个句子的意思是 当男员工工号小于 女员工， 就存进result数组，result数组向后移一位， 男员工数组元素索引也向后移一位
+                }else{ // 当女生的工号比男生的大
+                    if(b[j].number == b[j+1].number){ // 如果女生工号改变之后等于后一位女生的工号，就让后一位女生工号加1
+                        b[j+1].number += 1;
+                    }
+                    if(b[j].number > b[j+1].number){  // 如果女生工号改变后大于后面的工号，通过 大的减去小的 再加1
+                        var c = b[j].number - b[j+1].number +1; // 这个句子可以通过自己写一些数字去推出来， 例如 前面的是 16 后面的是 14 ，c的结果就是 17
+                        b[j+1].number += c;
+                    }
+                    result[k++] = b[j++]; // 判断的条件是女生工号 大于男的，就把女生的工号存在result数组，之后result 的索引向后移一位，女员工数组向后移一位
+                }
             }
-             if(b[i].number > b[i+1].number){  // 如果女生工号改变后大于后面的工号，通过 大的减去小的 再加1
-                var c = b[i].number - b[i+1].number +1;
-                b[i+1].number += c;
+
+            while(i<a.length){  // 这个while语句比上面的少了 j < b.length; 意思就是 b数组已经遍历完了，但是a数组还有数据没有存进 result数组 
+                result[k++] = a[i++]; // 把剩余的 a数组里的元素 添加进 result数组，result数组向后移一位， a数组也向后移一位
+                // 相当于下面的形式 
+               //  result[k] = a[i];
+               //  k++;
+              //   i++;
             }
+            while(j < b.length){ // 这个while语句比上面的少了 i<a.length; 意思就是 b数组已经遍历完了，但是b 数组还有数据没有存进 result数组 
+               for(var i = 0; i < j; i++){ // 对于剩下的b数组，就是女员工，因为需要跟女员工内部比较，所以我们要遍历剩下的女员工数组，不能直接插入
+                     if(b[i].number == b[i+1].number){ // 如果经过与男员工比较之后 number 变为跟后面一位女员工 number 一样，就让后一位女生工号加1
+                        b[i+1].number += 1;
+                    }
+                     if(b[i].number > b[i+1].number){  // 如果女生工号改变后大于后面的工号，通过 大的减去小的 再加1
+                        var c = b[i].number - b[i+1].number +1;
+                        b[i+1].number += c;
+                    }
+                }
+                 result[k++] = b[j++];
+
+            }
+            return result; // 作为函数，最后要把结果返回出去
         }
-         result[k++] = b[j++];
-         
-    }
-    return result; // 作为函数，最后要把结果返回出去
-}
 
-  console.log(mergeArr(sortMember(a,b)));
+          console.log(mergeArr(sortMember(a,b)));
     </script>
 </body>
 </html>
