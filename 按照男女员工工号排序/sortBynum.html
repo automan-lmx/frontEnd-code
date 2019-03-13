@@ -1,4 +1,19 @@
-var a = [{name: 'hhh',number: 12}, { name: 'ffff',number: 13}, {  name: 'f',
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       题目要求： 有两个数组，男员工和女员工，
+       按照员工序号从大到小排序，如果男员工的序号等于
+       女员工，女员工序号加1。要求如果女员工的序号改变后等于女员工后一位，后一位要加1
+    </div>
+    <script>
+       var a = [{name: 'hhh',number: 12}, { name: 'ffff',number: 13}, {  name: 'f',
             number: 14 }, {name: 'hh',number: 15}];
  var b = [{name: 'vita',sex: '女',number: 12}, {name: 'ef',sex: '女',number: 13}, {name: 'frr',sex: '女',number: 14}];
 
@@ -60,4 +75,7 @@ function mergeArr(callback){
     return result; // 作为函数，最后要把结果返回出去
 }
 
- mergeArr(sortMember(a,b));
+  console.log(mergeArr(sortMember(a,b)));
+    </script>
+</body>
+</html>
