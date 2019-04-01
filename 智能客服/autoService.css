@@ -1,0 +1,216 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* 整个智能客服的容器 */
+
+#container {
+    background: #f3f3f3;
+    display: flex;
+    flex-flow: column;
+    width: 99%;
+    border: 1px solid #7b6b6b;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* 智能客服 头部客服人员名称 */
+
+#container .title {
+    display: fixed;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    padding-left: 20px;
+    background: #363535;
+}
+
+/* 聊天对话框 页面的中间部分 */
+
+#content {
+    height: 450px;
+    border-bottom: 1px solid #ccc;
+    overflow-y: auto;
+    /*超出时出现滚动条*/
+    position: relative;
+}
+
+/* 对话框的 ul列表 */
+
+#content ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+}
+
+/* 对话框的 ul列表里的 li */
+
+#content ul li {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+}
+
+/* 时间标签 */
+.timeTag span {
+    /* border: 1px solid #000; */
+    background: #9999776e;
+    text-align: center;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px;
+}
+/* 展示的对话框内容 */
+
+.showTxt {
+    width: auto;
+    height: auto;
+    border: 0;
+    font-size: 15px;
+    color: black;
+    padding: 5px;
+    border-radius: 2px;
+    list-style: none;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+/* 智能客服对话框 左边对话框内容 */
+
+.showTxt .aiTxt {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.leftTxt .triIcon {
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    top: 15px;
+    margin-left: -12px;
+    border: 6px solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+/* 智能客服对话框 左边部分 */
+
+.left {
+    text-align: left;
+    margin-left: 1%;
+    margin-right: 40%;
+}
+
+/* 智能客服对话框 左边对话框  .leftTxt下面有 img  span 标签 */
+
+.leftTxt {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
+
+/* 智能客服对话框 右边部分 */
+
+.right {
+    margin-left: 40%;
+    justify-content: flex-end;
+    margin-right: 1%;
+}
+
+/*智能客服对话框 右边部分 用户文本 */
+
+.userText {
+    background: #99f326;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.txtContainer {
+    position: relative;
+    margin-right: 4%;
+}
+
+.txtContainer .rightIcon {
+    width: 0;
+    height: 0;
+    border: 6px solid;
+    border-color: transparent transparent transparent #99f326;
+    float: right;
+    position: absolute;
+    right: -12px;
+    top: 14px;
+}
+
+/* 左右两边展示图片的样式 */
+
+.showImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 8%;
+    /* position: relative; */
+    flex: 0 0 auto;
+}
+
+/* 左边图像 */
+
+.leftImg {
+    margin-right: 3%;
+}
+
+/* 智能客服对话框中滚动条 */
+
+#scroll {
+    position: relative;
+}
+
+/* 清除浮动 */
+
+.left:after, .right:after, .userContent:after, .txtContainer:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+/* 底部编辑栏 */
+
+#edit {
+    background: #fff;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 底部input 标签 */
+
+#txt {
+    height: 80%;
+    outline: none;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #aaa;
+}
+
+/* 底部发送按钮 */
+
+#btn {
+    background: #eee;
+    border: 1px solid #bbb;
+    width: 20%;
+    height: 66%;
+    outline: none;
+}
+
+#btn:hover {
+    cursor: pointer;
+    background-color: rgba(6, 71, 12, 0.473);
+}

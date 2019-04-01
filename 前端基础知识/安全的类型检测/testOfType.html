@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 判断是不是数组
+        function isArray(arr) {
+            return Object.prototype.toString.call(arr) == '[object Array]';
+        }
+        
+        // 判断是不是函数
+        function isFunction(func) {
+            return Object.toString.call(func) == '[object Function]';
+        }
+
+        // 判断是不是正则表达式
+        function isRegExp(reg) {
+            return Object.prototype.toString.call(reg) == '[object RegExp]';
+        }
+
+
+        var value = [1, 2, 3, 4];
+        var func = function () {
+            console.log(111);
+        }
+
+        var reg = /[a-z]*/g;
+        isArray(value);
+        isFunction(func);
+        isRegExp(reg);
+
+    </script>
+</body>
+
+</html>

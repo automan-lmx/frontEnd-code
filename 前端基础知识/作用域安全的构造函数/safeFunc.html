@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*
+        * 避免全局对象上意外添加属性, 如果没有指定 this 指向，
+        * 当不使用new 创建实例，this 指向window
+        % 下面 window.name 将打印 'vita'
+        **/
+        function Person(name, age, job){
+            if(this instanceof Person){
+                this.name = name;
+                this.age = age;
+                this.job = job;
+            }else {
+                return new Person(name, age, job);
+            }
+        }
+        var per = Person('vita', 16, 'frontEnd');
+        per.name; // "vita"
+        window.name; // ""
+
+        var person = new Person('lin',18, 'student');
+        person.name; // 'lin'
+        
+        /**
+         * @description: 
+         * @param {type} 
+         * Polygon 函数的作用域是安全的 
+         */
+        function Polygon(size){
+           if( this instanceof Polygon){
+                this.size = size;
+                this.getArea = function(){
+                    return 0;
+                }
+           }else{
+               return new Polygon(size);
+           }
+        }
+
+        /**
+         * @description: Rectangle
+         * @param {type} 
+         *
+         */
+        function Rectangle(width, height){
+            Polygon.call(this, 2); // this 指向并非Polygon的实例，
+            this.width = width; // 所以Rectangle 实例不会有sides属性
+            this.height = height;
+            this.getArea = function(){
+                return this.width * this.height;
+            }
+        }
+
+        var rect = new Rectangle(10, 20);
+        console.log(rect.size); // undefined
+        
+    // 结合原型链或者寄生组合可以解决
+    Rectangle.prototype = new Polygon();
+    var rect2 = new Rectangle(12,23);
+    console.log(rect2.size); // 2
+        
+
+    </script>
+</body>
+</html>
