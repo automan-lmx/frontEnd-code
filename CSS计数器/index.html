@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div.simple {
+        /* 重置计数器成0 */
+        counter-reset: add;
+        /* 自定义起始值, 会根据选中的style类型取相应数字值*/
+        /* counter-reset: add 5; */
+      }
+      h3:before {
+        /* 增加计数器的值 */
+        counter-increment: add;
+        /* 自定义每次增加的值 2*/
+        /* counter-increment: add 2; */
+        /* content: counter(计数器名称[, 显示的风格]) */
+        content: "Title " counter(add, lower-latin) ":";
+      }
+      .great ol {
+        counter-reset: great;
+      }
+      li {
+        display: block;
+      }
+      li:before {
+        counter-increment: great;
+        /* content: counters(计数器名称, 嵌套时拼接字符串[,可选显示风格]) */
+        content: counters(great, ".") " ";
+        /* 如果使用counter 那么只作用于当前的作用域,使用下面的进行测试 */
+        /* content: counter(great) */
+      }
+      .checked {
+        counter-reset: check;
+        position: relative;
+        border: 1px solid #000;
+      }
+      .show{
+        width: 200px;
+        height: 20px;
+        border: 1px solid #000;
+      }
+      input:checked:after {
+        position: absolute;
+        top: 20px;
+        display: block;
+        counter-increment: check;
+        content: "共选择了" counter(check) "种菜系";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="simple">
+      <h3>css计数器</h3>
+      <h3>自动添序号</h3>
+      <h3>counter</h3>
+      <h3>counters</h3>
+    </div>
+    <div class="great">
+      <ol>
+        <li>item1</li>
+        <li>
+          item2
+          <ol>
+            <li>item2.1</li>
+            <li>item2.2</li>
+            <li>
+              item2.3
+              <ol>
+                <li>item2.3.1</li>
+              </ol>
+              <ol>
+                <li>item2.3.1</li>
+              </ol>
+            </li>
+            <li>item2.4</li>
+          </ol>
+        </li>
+        <li>item3</li>
+        <li>item4</li>
+      </ol>
+    </div>
+    <div class="checked">
+      <input type="checkbox" name="鲁菜" id="lu" />
+      <label for="lu">鲁菜</label>
+      <input type="checkbox" name="湘菜" id="xiang" />
+      <label for="xiang">湘菜</label>
+      <input type="checkbox" name="豫菜" id="yu" />
+      <label for="yu">豫菜</label>
+      <input type="checkbox" name="粤菜" id="yue" />
+      <label for="yue">粤菜</label>
+      <input type="checkbox" name="川菜" id="chuan" />
+      <label for="chuan">川菜</label>
+    </div>
+  </body>
+</html>
