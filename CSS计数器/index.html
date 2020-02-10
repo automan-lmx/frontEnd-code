@@ -38,14 +38,15 @@
         position: relative;
         border: 1px solid #000;
       }
-      .show{
+      .show {
         width: 200px;
         height: 20px;
         border: 1px solid #000;
       }
-      input:checked:after {
+      .input-check > input:checked + .show:after {
         position: absolute;
-        top: 20px;
+        /* top: 20px; */
+        right: 20px;
         display: block;
         counter-increment: check;
         content: "共选择了" counter(check) "种菜系";
@@ -84,16 +85,27 @@
       </ol>
     </div>
     <div class="checked">
-      <input type="checkbox" name="鲁菜" id="lu" />
-      <label for="lu">鲁菜</label>
-      <input type="checkbox" name="湘菜" id="xiang" />
-      <label for="xiang">湘菜</label>
-      <input type="checkbox" name="豫菜" id="yu" />
-      <label for="yu">豫菜</label>
-      <input type="checkbox" name="粤菜" id="yue" />
-      <label for="yue">粤菜</label>
-      <input type="checkbox" name="川菜" id="chuan" />
-      <label for="chuan">川菜</label>
+      <div class="input-check">
+        <input type="checkbox" name="鲁菜" id="lu" />
+        <label for="lu">鲁菜</label>
+      </div>
+      <div class="input-check">
+        <input type="checkbox" name="湘菜" id="xiang" />
+        <label for="xiang">湘菜</label>
+      </div>
+      <div class="input-check">
+        <input type="checkbox" name="豫菜" id="yu" />
+        <label for="yu">豫菜</label>
+      </div>
+      <div class="input-check">
+        <input type="checkbox" name="粤菜" id="yue" />
+        <label for="yue">粤菜</label>
+      </div>
+      <div class="input-check">
+        <input type="checkbox" name="川菜" id="chuan" />
+        <label for="chuan">川菜</label>
+      </div>
+      <div class="show"></div>
     </div>
   </body>
 </html>
