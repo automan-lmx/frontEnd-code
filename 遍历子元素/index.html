@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>获取元素的第n个祖先元素</title>
+  </head>
+  <body>
+    <div>
+      <strong></strong>
+      <span>
+        <p><i></i></p>
+      </span>
+      <span></span>
+    </div>
+    <div class="show"></div>
+    <script>
+      var i = document.getElementsByTagName("i")[0];
+      var show = document.getElementsByClassName("show")[0];
+      getFather(i, 3);
+      // 错误的写法，没有遍历，如果层级过多就出现错了
+      function getFather(ele, n) {
+        if (n >= 1) {
+          ele = ele.parentElement;
+        }
+        console.log(ele.parentElement);
+        return ele.parentElement;
+      }
+      retParent(i, 3);
+      // 正确的做法，且比for 循环更加直观
+      function retParent(ele, n) {
+        while (ele && n) {
+          ele = ele.parentElement;
+          n--;
+        }
+        return ele;
+      }
+    </script>
+  </body>
+</html>
