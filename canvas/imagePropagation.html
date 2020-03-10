@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>画笔上使用image 属性</title>
+    <style>
+      #canvas {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      var cans = document.getElementById("canvas");
+      var ctx = cans.getContext("2d");
+      ctx.fillRect(100, 100, 100, 100);
+      var pixel = ctx.getImageData(100, 100, 100, 100);
+      console.log(pixel);
+      var col = pixel.width;
+      var row = pixel.height;
+      var data = pixel.data;
+      // 通过使用 for循环找到 rgba的第四个参数 a 改变它的值来改变颜色
+      // for (var i = 0; i < row; i++) {
+      //   var c = i * col * 4;
+      //   for (var j = 0; j < col; j++) {
+      //     data[c + j * 4 + 3] = 128;
+      //   }
+      // }
+
+      // 第二种方法，是通过将所有的 rgba改为相同的值也可以改变 颜色 这就是取色的原理
+      for (var i = 0; i < data.length; i++) {
+        data[i] = 128;
+      }
+      ctx.putImageData(pixel, 200, 200);
+    </script>
+  </body>
+</html>
