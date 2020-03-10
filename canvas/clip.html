@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>canvas</title>
+    <style>
+      #canvas {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+      var cans = document.getElementById("canvas");
+      var ctx = cans.getContext("2d");
+      ctx.beginPath();
+      ctx.arc(100, 100, 50, 0, Math.PI * 2);
+      ctx.save(); // 保存画布的坐标轴位置，当clip（）裁剪之后，位置信息就被保存出来
+      ctx.clip();
+      ctx.fillRect(100, 100, 100, 100);
+      ctx.restore(); // 使用restore 可以获取store里存储的状态
+      ctx.fillRect(200, 200, 50, 50); // 从而下面的矩形才能显示
+      ctx.stroke();
+    </script>
+  </body>
+</html>
