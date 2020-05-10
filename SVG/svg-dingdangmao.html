@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>svg画叮当猫</title>
+    <style>
+      svg {
+        border: 1px solid #000;
+      }
+      path,
+      ellipse,
+      circle {
+        stroke: #000;
+      }
+      path.head {
+        fill: rgb(0, 140, 255);
+      }
+      path.mouse-stroke {
+        fill: transparent;
+      }
+      .face,
+      .eyes {
+        fill: #fff;
+      }
+      /* .eyes {
+        fill: #000;
+      } */
+      circle.nose {
+        fill: #f00;
+      }
+      .nose-white {
+        fill: #fff;
+        stroke: #fff;
+      }
+      line {
+        stroke: #000;
+      }
+      .red {
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke: red;
+        /* fill: red; */
+      }
+      .ring {
+        fill: rgba(255, 255, 0, 0.8);
+      }
+      /* 肚子 */
+      .belly {
+        fill: transparent;
+      }
+      /* 手 */
+      circle.hands {
+        fill: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="400" height="400">
+      <path class="head" d="M 100 180 A 80 80 340 1 1 170 180"></path>
+      <ellipse class="face" cx="135" cy="135" rx="60" ry="45"></ellipse>
+      <ellipse class="eyes left-eye" cx="120" cy="85" rx="18" ry="22"></ellipse>
+      <ellipse class="eyes left-eye" cx="156" cy="85" rx="18" ry="22"></ellipse>
+      <ellipse class="black" cx="124" cy="96" rx="4" ry="5"></ellipse>
+      <ellipse class="black" cx="150" cy="96" rx="4" ry="5"></ellipse>
+      <circle class="nose" cx="138" cy="106" r="7"></circle>
+      <circle class="nose-white" cx="140" cy="103" r="2"></circle>
+      <line x1="138" y1="113" x2="138" y2="164"></line>
+      <line x1="88" y1="123" x2="128" y2="129"></line>
+      <line x1="88" y1="134" x2="128" y2="134"></line>
+      <line x1="88" y1="144" x2="128" y2="138"></line>
+      <line x1="148" y1="129" x2="188" y2="123"></line>
+      <line x1="148" y1="134" x2="188" y2="134"></line>
+      <line x1="148" y1="138" x2="188" y2="144"></line>
+      <path class="mouse-stroke" d="M 104 146 A 40 36 200 0 0 174 146"></path>
+      <line class="red" x1="90" y1="180" x2="180" y2="180"></line>
+      <circle class="ring" cx="135" cy="188" r="8"></circle>
+      <circle class="black" cx="135" cy="191" r="2"></circle>
+      <path class="belly" d="M 100 183 A 44 44 180 1 0 174 183"></path>
+      <line x1="114" y1="216" x2="164" y2="216"></line>
+      <path class="mouse-stroke" d="M 114 216 A 20 20 180 1 0 164 216"></path>
+      <circle class="hands" cx="40" cy="170" r="12"></circle>
+      <circle class="hands" cx="228" cy="170" r="12"></circle>
+      <line x1="52" y1="168" x2="88" y2="184"></line>
+      <line x1="44" y1="180" x2="78" y2="196"></line>
+      <ellipse class="face" cx="135" cy="135" rx="60" ry="45"></ellipse>
+    </svg>
+  </body>
+</html>

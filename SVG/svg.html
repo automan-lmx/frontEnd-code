@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>svg的使用</title>
+    <style>
+      #base {
+        border: 1px solid #000;
+      }
+      #base line {
+        stroke: #ff0;
+      }
+      #base rect {
+        fill: blue;
+      }
+      #base polyline {
+        fill: transparent;
+        stroke: yellowgreen;
+      }
+      #base polygon {
+        fill: transparent;
+        stroke: tomato;
+      }
+      #demo {
+        background-color: #ddd;
+      }
+      #demo rect {
+        fill: transparent;
+        stroke-width: 4;
+      }
+      #demo circle,
+      #demo rect,
+      #demo .little-polygon,
+      #demo ellipse {
+        stroke: #000;
+      }
+      #demo .stroke-circle,
+      #demo .little-polygon,
+      #demo ellipse {
+        fill: transparent;
+        stroke-width: 3;
+      }
+      #demo text {
+        stroke: violet;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="500" height="500" id="base">
+      <!-- 直线 只需要 (x1,y1) (x2,y2)两个点 -->
+      <line x1="100" y1="100" x2="200" y2="200"></line>
+      <!-- 矩形 需要 (x,y) 宽高 rx,ry 代表矩形的边框弧度 -->
+      <rect x="50" y="50" height="100" width="100" rx="10" ry="10"></rect>
+      <!-- 圆： 需要 半径r 圆心(cx,cy) -->
+      <circle r="50" cx="200" cy="200"></circle>
+      <!-- 椭圆ellipse 需要 圆心(cx,cy) 需要弧度 rx ry -->
+      <ellipse cx="220" cy="300" rx="100" ry="10"></ellipse>
+      <!-- 折线 每个点之间用 逗号隔开-->
+      <polyline points="60 100, 100 20, 150 50, 200 30"></polyline>
+      <!-- 多边形 会绘制起点到终点  -->
+      <polygon points="160 100, 200 20, 250 50, 300 30"></polygon>
+      <!-- 文本 -->
+      <text x="300" y="30">hello, vita</text>
+    </svg>
+    <svg width="400" height="460" id="demo">
+      <rect x="40" y="80" width="300" height="300" rx="20" ry="20"></rect>
+      <polygon
+        points="60 78, 90 50, 150 78, 190 46, 230 78, 280 50, 320 80"
+      ></polygon>
+      <circle r="30" cx="110" cy="180" class="stroke-circle"></circle>
+      <circle r="30" cx="270" cy="180" class="stroke-circle"></circle>
+      <circle r="5" cx="126" cy="194" class="little-circle"></circle>
+      <circle r="5" cx="256" cy="194" class="little-circle"></circle>
+      <polygon
+        points="180 260, 190 232, 200 260"
+        class="little-polygon"
+      ></polygon>
+      <ellipse cx="190" cy="290" rx="50" ry="15"></ellipse>
+      <text x="140" y="420">你好呀，我是谁</text>
+    </svg>
+  </body>
+</html>
