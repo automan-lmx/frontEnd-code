@@ -1,4 +1,7 @@
 Promise.myRace = function(proms) {
+    if(!proms || typeof proms[Symbol.iterator] !== 'function') {
+        throw new TypeError('Agument must be an iterable of promise')
+    }
     let res, rej
     const p = new Promise((resolve, reject) => {
       res = resolve
